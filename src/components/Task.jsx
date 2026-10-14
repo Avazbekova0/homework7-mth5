@@ -1,6 +1,9 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Tasks({ tasks, getTasks }) {
+  const navigate = useNavigate();
   const deleteTasks = (id) => {
     axios
       .delete(`http://localhost:8000/tasks/${id}`)
@@ -11,7 +14,7 @@ export default function Tasks({ tasks, getTasks }) {
   };
 
   return (
-    <div className='Cupper'>
+    <div className='data_cont'>
       {tasks?.map((task) => (
         <div key={task.id}>
           <p>Задача: {task.text}</p>
@@ -30,6 +33,7 @@ export default function Tasks({ tasks, getTasks }) {
           <button onClick={() => deleteTasks(task.id)}>
             Удалить
           </button>
+          <button onClick={() => navigate(`/details/${task.id}`)}>Детальный просмотр</button>
         </div>
       ))}
     </div>

@@ -1,33 +1,25 @@
-import { useState, useEffect } from 'react';
-import './App.css'
-import axios from 'axios';
-import CreateTask from './components/CreateTask';
-import Tasks from './components/Task';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Header from './pages/Header';
+import Footer from './pages/Footer';
+import Details from './pages/Details';
+import NotFound from './components/NotFound';
 
-function App() {
-  const [task, setTask] = useState([]);
-
-  const getTasks = () => {
-    axios
-      .get('http://localhost:8000/tasks')
-      .then(({ data }) => {
-        setTask(data);
-      })
-      .catch((e) => console.log(e));
-  };
-
-  useEffect(() => {
-    getTasks();
-  }, []);
-
+const App = () => {
   return (
-    <>
-      <CreateTask getTasks={getTasks} />
+    <BrowserRouter>
+    <Header />
 
-      <h1 className='title'>Задачи</h1>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<About />} />
+      <Route path="*" element={<NotFound />} />
+      <Route path="/details/:id" element={<Details />} />
+    </Routes>
 
-      <Tasks tasks={task} getTasks={getTasks} />
-    </>
+    <Footer />
+    </BrowserRouter>
   );
 }
 

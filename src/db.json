@@ -1,18 +1,11 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "text": "Hello",
+      "text": "defsdghjkjjhg",
       "status": "true",
-      "date": "11.02.2002",
-      "category": "Учёба"
-    },
-    {
-      "text": "Vooofff",
-      "status": "false",
-      "date": "2026-09-30",
+      "date": "2026-10-10",
       "category": "Учёба",
-      "id": "QzbVfKelBYk"
+      "id": "ZUyRoKnab2Y"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
